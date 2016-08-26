@@ -31,7 +31,10 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "admin-lte": "^2.3.6",
+    "es6-promise": "^3.2.1",
     "flex-css-layout": "^1.2.8",
+    "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",

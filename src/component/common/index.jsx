@@ -1,87 +1,73 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import {Link} from 'react-router'
 
-export class Header extends Component{
-    constructor(props){
+export class Header extends Component {
+    constructor(props)
+    {
         super(props);
     }
 
-    render(){
-        let {trueName,title}=this.props;
-        return(
-            <header className="navbar-wrapper">
-                <div className="navbar navbar-fixed-top">
-                    <div className="container-fluid cl">
-                        <a className="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">H-ui.admin</a>
-                        <a className="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
-                        <span className="logo navbar-slogan f-l mr-10 hidden-xs">v2.4</span>
-                        <nav id="Hui-userbar" className="nav navbar-nav navbar-userbar hidden-xs">
-                            <ul className="cl">
-                                <li>{trueName}</li>
-                                <li className="dropDown dropDown_hover"> <a href="#" className="dropDown_A">{title}
-                                    <i className="Hui-iconfont">&#xe6d5;</i></a>
-                                    <ul className="dropDown-menu menu radius box-shadow">
-                                        <li><a href="#">个人信息</a></li>
-                                        <li><a href="#">切换账户</a></li>
-                                        <li><a href="#">退出</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+    render()
+    {
+        let {trueName, title}=this.props;
+        return (
+            <header className="main-header">
+                <a href="index2.html" className="logo">
+                    <span className="logo-mini"><b>ace</b>api</span>
+                    <span className="logo-lg"><b>Ace</b>Api</span>
+                </a>
+                <nav className="navbar navbar-static-top" role="navigation">
+                    <a href="#" className="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span className="sr-only">Toggle navigation</span>
+                    </a>
+                    {trueName}
+                </nav>
             </header>
         )
     }
 }
 
-export class Menu extends Component{
-    render(){
-        let arr=[];
-        arr[this.props.index]='on';
-        return(
-            <div>
-                <aside className="Hui-aside">
-                    <input runat="server" id="divScrollValue" type="hidden" value="" />
-                    <div className="menu_dropdown bk_2">
-                        <dl id="menu-article">
-                            <dt><i className="Hui-iconfont">&#xe616;</i> 资讯管理<i className="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                            <dd>
-                                <ul>
-                                    <li>
-                                        <Link to="/">
-                                            资讯管理
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </dd>
-                        </dl>
-                        <dl id="menu-admin">
-                            <dt><i className="Hui-iconfont">&#xe62d;</i> 管理员管理<i className="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                            <dd>
-                                <ul>
-                                    <li>
-                                        <Link to="/Users">
-                                            角色管理
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/Users">
-                                            权限管理
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/Users">
-                                            管理员列表
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </dd>
-                        </dl>
-                    </div>
-                </aside>
-            </div>
+export class Menu extends Component {
+    render() {
+        return (
+            <aside className="main-sidebar">
+                <section className="sidebar">
+                    <ul className="sidebar-menu">
+                        <li className="header">HEADER</li>
+                        <li className="treeview">
+                            <a href="#">
+                                <i className="fa fa-laptop"></i>
+                                <span>UI Elements</span>
+                                <span className="pull-right-container">
+                                    <i className="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul className="treeview-menu">
+                                <li><a href="pages/UI/general.html"><i className="fa fa-circle-o"></i> General</a></li>
+                                <li><a href="pages/UI/icons.html"><i className="fa fa-circle-o"></i> Icons</a></li>
+                                <li><a href="pages/UI/buttons.html"><i className="fa fa-circle-o"></i> Buttons</a></li>
+                                <li><a href="pages/UI/sliders.html"><i className="fa fa-circle-o"></i> Sliders</a></li>
+                                <li><a href="pages/UI/timeline.html"><i className="fa fa-circle-o"></i> Timeline</a></li>
+                                <li><a href="pages/UI/modals.html"><i className="fa fa-circle-o"></i> Modals</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </aside>
         );
     };
 
+}
+
+export class Footer extends Component{
+    render(){
+        return (
+            <footer className="main-footer">
+                <div className="pull-right hidden-xs">
+                    Anything you want
+                </div>
+                <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+            </footer>
+        );
+    }
 }
