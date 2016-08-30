@@ -46,6 +46,12 @@ Tool.ajax=function(mySetting){
         return httpEnd();
     }
 
+    if (setting.async) {
+        xhr.addEventListener('readystatechange', httpEnd, false);
+    } else {
+        httpEnd();
+    }
+
     function httpEnd() {
         if(xhr.readyState==4){
             var head=xhr.getAllResponseHeaders();
@@ -83,3 +89,81 @@ Tool.ajax=function(mySetting){
 
     return xhr;
 };
+
+/**
+ * 封装ajax post请求
+ * @param pathname 服务器请求地址
+ * @param data 发送给服务器的数据
+ * @param success 请求成功执行方法
+ * @param error 请求失败执行方法
+ * @returns {*}
+ */
+Tool.post=function(pathname,data,success,error){
+    var setting={
+        url:pathname,
+        type:'POST',
+        data:data,
+        success: success|| function(){},
+        error: error|| function () {}
+    }
+    return Tool.ajax(setting);
+};
+
+/**
+ * 封装ajax get请求
+ * @param pathname 服务器请求地址
+ * @param data 发送给服务器的数据
+ * @param success 请求成功执行方法
+ * @param error 请求失败执行方法
+ * @returns {*}
+ */
+Tool.get=function (pathname,data,success,error) {
+    var setting={
+        url:pathname,
+        type:'GET',
+        data: data,
+        success: success|| function(){},
+        error: error|| function () {}
+    }
+    return Tool.ajax(setting);
+};
+
+/**
+ * 合并对象属性
+ * @param args
+ */
+Tool.merged=(...args)=>{
+    var obj={};
+    for(let i=0;i<args.length;i++){
+        for(let key in args[i]){
+            let curObj=args[i][key];
+            if (Tool.isJson(curObj)) {
+                if (Tool.isJson(obj[key])) {
+                    obj[key]=Tool.merged(obj[key],curObj);
+                }else{
+                    obj[key]=Tool.merged(curObj);
+                }
+            }else{
+                obj[key]=curObj;
+            }
+        }
+    }
+    return obj;
+};
+
+/*
+ 判断对象是不是Json
+ */
+Tool.isJson = (obj) => {
+    return typeof(obj) == 'object' && Object.prototype.toString.call(obj).toLowerCase() === '[object object]' && !obj.length; //true 是 false不是
+};
+
+/*
+ 判断对象是不是数组
+ */
+Tool.isArray = (arr) => {
+    return Object.prototype.toString.call(arr).toLowerCase() === '[object array]'; //true 是 false不是
+};
+
+export default Tool;
+

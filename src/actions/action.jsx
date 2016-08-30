@@ -1,3 +1,4 @@
+
 export default (_ID) => {
     const action={};
 
@@ -17,20 +18,6 @@ export default (_ID) => {
      */
     action.GET_DATA_ERROR = (state) => {
         return { _ID, state, type: 'GET_DATA_ERROR' };
-    }
-
-    /*
-     设置滚动条
-     */
-    action.SETSCROLL = (state) => {
-        return { _ID, state, type: 'SETSCROLL' };
-    }
-
-    /*
-     更新classid
-     */
-    action.CLASSID_UPDATE = (state) => {
-        return { _ID, state, type: 'CLASSID_UPDATE' };
     }
 
     return action;

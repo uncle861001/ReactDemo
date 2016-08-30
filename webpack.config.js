@@ -6,7 +6,7 @@ var config={
 	entry:{
 		app: [
 			'webpack/hot/dev-server',
-			'webpack-dev-server/client?http://localhost:8080',
+			'webpack-dev-server/client?http://localhost:8070',
 			'./src/app'
 		]
 	},
