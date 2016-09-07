@@ -10,57 +10,13 @@ class Header extends Component {
     render() {
         let {msg}=this.props;
         return (
-            <div id="navbar" className="navbar navbar-default">
-                <div className="navbar-container" id="navbar-container">
-                    <button type="button" className="navbar-toggle menu-toggler pull-left" id="menu-toggler"
-                            data-target="#sidebar">
-                        <span className="sr-only">Toggle sidebar</span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                    </button>
-                    <div className="navbar-header pull-left">
-                        <a ui-sref="index" className="navbar-brand">
-                            <small>
-                                <i className="fa fa-leaf"></i>
-                                Api管理系统
-                            </small>
-                        </a>
-                    </div>
-
-                    <div className="navbar-buttons navbar-header pull-right" role="navigation">
-                        <ul className="nav ace-nav">
-                            <li className=" green">
-                                <a>
-						<span className="user-info">
-							<small>欢迎光临,</small>
-                            {msg.name}
-						</span>
-                                </a>
-                            </li>
-                            <li className="grey">
-                                <a ui-sref="index.changePassword">
-                                    <i className="ace-icon fa fa-cog"></i>
-                                    修改密码
-                                </a>
-                            </li>
-                            <li className="purple">
-                                <a ui-sref="index.userProfile({id:vm.user.id})">
-                                    <i className="ace-icon fa fa-user"></i>
-                                    个人资料
-                                </a>
-                            </li>
-                            <li className="light-blue">
-                                <a ng-click="vm.logout()">
-                                    <i className="ace-icon fa fa-power-off"></i>
-                                    退出
-                                </a>
-                            </li>
-                        </ul>
-
+            <header className="navbar-wrapper">
+                <div className="navbar navbar-black">
+                    <div className="container-fluid cl">
+                        <a className="logo navbar-logo hidden-xs" href="/aboutHui.shtml">ApiAce</a>
                     </div>
                 </div>
-            </div>
+            </header>
         )
     }
 }
@@ -75,40 +31,23 @@ export class Menu extends Component {
 
         this.TogleClick=(e)=>{
             var $link=$(e.target);
-            $link.parents().find('.open').addClass('active')
-            $link.parents().addClass('active');
+            $link.parent().addClass('current');
         }
     }
     render() {
         return (
-            <div className="sidebar responsive" id="sidebar">
-                <ul className="nav nav-list">
-                    <li>
-                        <a href="#" className="dropdown-toggle">
-                            <i className="menu-icon fa fa-list"></i>
-                            <span className="menu-text">Api管理</span>
-                            <b className="arrow fa fa-angle-down"></b>
-                        </a>
-                        <b className="arrow"></b>
-                        <ul className="submenu">
-                            <li>
-                                <Link to="/adminUser" onClick={this.TogleClick}>
-                                    <i className="menu-icon fa fa-caret-right"></i>
-                                    Api管理
-                                </Link>
-                                <b className="arrow"></b>
-                            </li>
-                            <li>
-                                <a href="jqgrid.html">
-                                    <i className="menu-icon fa fa-caret-right"></i>
-                                    jqGrid plugin
-                                </a>
-                                <b className="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            <aside className="Hui-aside">
+                <div className="menu_dropdown bk_2">
+                    <dl id="menu_notes">
+                        <dt className="">&nbsp;&nbsp;&nbsp;&nbsp;管理员管理<i className="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                        <dd style={{display: 'none'}}>
+                            <ul>
+                                <li><Link to="/adminUser" onClick={this.TogleClick}>Api管理</Link></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </aside>
         );
     };
 }
@@ -117,7 +56,9 @@ export class Content extends Component {
     render() {
         return (
             <div className="main-content">
-                {this.props.children}
+                <div className="main-content-inner">
+                    {this.props.children}
+                </div>
             </div>
         );
     }
@@ -126,16 +67,11 @@ export class Content extends Component {
 export class Footer extends Component {
     render() {
         return (
-            <div className="footer">
-                <div className="footer-inner">
-                    <div className="footer-content">
-						<span className="bigger-120">
-							<span className="blue bolder">Ace</span>
-							Application &copy; 2016-2017
-						</span>
-                    </div>
+            <footer className="footer mt-20">
+                <div className="container-fluid">
+
                 </div>
-            </div>
+            </footer>
         );
     }
 }

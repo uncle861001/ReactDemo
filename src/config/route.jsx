@@ -9,11 +9,11 @@ class Main extends Component {
         return (
             <div>
                 <ShowHeader/>
-                <div class="main-container" id="main-container">
-                    <Menu />
-                    {this.props.children}
-                    <Footer/>
-                </div>
+                <Menu />
+                {this.props.children}
+                <Footer/>
+                <a href="javascript:void(0)" class="tools-right toTop Hui-iconfont" title="返回顶部" alt="返回顶部"
+                   style="display:none"></a>
             </div>
         );
     };
